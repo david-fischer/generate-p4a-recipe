@@ -72,12 +72,18 @@ FLAGS
 ## :microscope: Troubleshooting
 
 * start script in correct python-environment
+
 * make sure to have correct version of package installed (dependencies might change)
+
 * have a look at https://python-for-android.readthedocs.io/en/latest/recipes/
+
 * or https://github.com/kivy/python-for-android/tree/master/pythonforandroid/recipes
+
 * when building with buildozer, you might need to clean the build for changes to take effect
 
+* you might need additional dependencies like setuptools at build-time, which are not listed in the requirements
 
+  -> check if necessary, add manually, try with call_hostpython_via_targetpython = False
 
 ## :package: Dependencies
 
