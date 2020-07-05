@@ -1,8 +1,10 @@
-<h3 align="center">Recipe Generator for python-for-android</h3>
+<h1 align="center">Recipe Generator for python-for-android</h1>
 
 Python-CLI to easily create recipes for python-for-android. I use it for building a [kivy](https://kivy.org/#home)-app with [buildozer](https://buildozer.readthedocs.io/en/latest/).
 
 This is useful if the installation with pip fails or you don't want to add all requirements manually to your *buildozer.spec* file only to note on building that the dependencies itself have unmet dependencies, etc.
+
+In many cases you might need to make further changes to the recipe for a successful built but at least, this gives a filled in template to start with.
 
 * Searches PyPI or Github for source-url by api-request
 * Prompts the user with a choice for possible versions
@@ -14,7 +16,7 @@ This is useful if the installation with pip fails or you don't want to add all r
 
 ```
 git clone https://github.com/david-fischer/generate-p4a-recipe.git
-cd genergate-p4arecipe
+cd generate-p4a-recipe
 pip install -r requirements.txt
 ```
 
