@@ -9,7 +9,8 @@ import pystache
 import requests
 from simple_term_menu import TerminalMenu
 
-STACHE_TEMPLATE_PATH = f"{os.path.dirname(__file__)}/recipe_template.stache"
+print(__file__)
+STACHE_TEMPLATE_PATH = f"{__file__}/recipe_template.stache"
 RECIPES = [
     "PythonRecipe",
     "CythonRecipe",
