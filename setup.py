@@ -17,4 +17,6 @@ setup(
         "pipdeptree",
         "simple_term_menu",
     ],
+    package_data={"": ["README.md", "recipe_template.stache", "LICENSE"]},
+    include_package_data=True,
 )
