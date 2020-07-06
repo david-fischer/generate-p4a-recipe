@@ -16,8 +16,6 @@ The generated recipe **should be seen as a template**, even though in **simple c
 
 ```
 pip install git+https://github.com/david-fischer/generate-p4a-recipe.git
-cd generate-p4a-recipe
-pip install -r requirements.txt
 ```
 
 ### Local recipes with buildozer
@@ -33,7 +31,7 @@ p4a.local_recipes = ./src/python-for-android/recipes/
 Usage example:
 
 ```
-python /path/to/script/generate_p4a_recipe.py --package-name="some_package" --project-dir="/path/to/kivy-project/"
+python -m generate_p4a_recipe --package-name="some_package" --project-dir="/path/to/kivy-project/"
 ```
 
 Help text:
