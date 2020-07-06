@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name="generate-p4a-recipe",
     version="0.1",
-    packages=["generate-p4a-recipe"],
+    packages=["."],
     url="github.com/david-fischer/generate-p4a-recipe",
     license="MIT",
     author="david-fischer",
