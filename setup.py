@@ -9,4 +9,12 @@ setup(
     author="david-fischer",
     author_email="david.fischer.git@posteo.de",
     description="Generates recipe for python-for-android.",
+    install_requires=[
+        "attrs",
+        "fire",
+        "pystache",
+        "requests",
+        "pipdeptree",
+        "simple_term_menu",
+    ],
 )
