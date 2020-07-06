@@ -59,7 +59,10 @@ Args:
         self.set_dependencies()
         if not self.recipe_class:
             self.recipe_class = RECIPES[
-                TerminalMenu(title="Choose Recipe-Class:", menu_entries=RECIPES).show()
+                TerminalMenu(
+                    title=f"Choose Recipe-Class for {self.package_name}:",
+                    menu_entries=RECIPES,
+                ).show()
             ]
         if not self.url:
             self.set_url_and_version()
@@ -107,14 +110,17 @@ Args:
         repo_api_url = json_response["items"][terminal_menu.show()]["url"] + "/tags"
         json_response = requests.get(repo_api_url).json()
         versions = ["master"] + [item["name"] for item in json_response]
-        terminal_menu = TerminalMenu(title="Version:", menu_entries=versions)
+        terminal_menu = TerminalMenu(
+            title=f"Version of {self.package_name}:", menu_entries=versions
+        )
         version = versions[terminal_menu.show()]
         url = json_response[0]["tarball_url"].rsplit("/", 1)[0] + "/{version}"
         return url, version
 
     def set_url_and_version(self):
         if TerminalMenu(
-            title="Select source for package:", menu_entries=["PyPI", "github"]
+            title=f"Select source for {self.package_name}:",
+            menu_entries=["PyPI", "github"],
         ).show():
             # Github
             self.url, self.version = self.get_github_url_and_version()
