@@ -32,6 +32,8 @@ under <project_dir>/scr/python-for-android/recipes/<package_name>/__init__.py
 For full functionality <package_name> (in the desired version) and pipdeptree
 should be installed in the current python environment.
 
+For further info see https://github.com/david-fischer/generate-p4a-recipe#microscope-troubleshooting .
+
 Args:
     package_name: Name of the package for which the recipe should be generated.
     url: Source of the package. If not set, user is prompted with possible options.
