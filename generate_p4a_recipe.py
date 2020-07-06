@@ -91,7 +91,7 @@ Args:
         choice_index = terminal_menu.show()
         version = current_version if choice_index == 0 else versions[-choice_index]
         url = json_response["releases"][version][-1]["url"]
-        return version, url
+        return url, version
 
     def get_github_url_and_version(self):
         json_response = requests.get(
