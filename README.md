@@ -10,7 +10,7 @@ This is useful if the installation with pip fails or you don't want to add all r
 
 The generated recipe **should be seen as a template**, even though in **simple cases it can work out of the box**. See [Troubleshooting](#-troubleshooting)
 
-## 🔧 Setup
+## 🚧 Setup
 
 ### Installation
 
@@ -28,7 +28,7 @@ We need to add the path of our recipes in the apropriate place in the *buildozer
 p4a.local_recipes = ./src/python-for-android/recipes/
 ```
 
-## 🎈 Usage
+## 🔧 Usage
 
 Usage example:
 
@@ -54,6 +54,8 @@ DESCRIPTION
     For full functionality <package_name> (in the desired version) and pipdeptree
     should be installed in the current python environment.
 
+    For further info see https://github.com/david-fischer/generate-p4a-recipe#-troubleshooting .
+
 ARGUMENTS
     PACKAGE_NAME
         Name of the package for which the recipe should be generated.
@@ -69,7 +71,7 @@ FLAGS
         Directory where the recipe should be saved. Defaults to ".".
 ```
 
-## 🔬 Troubleshooting
+## 🎯 Troubleshooting
 
 * start script in correct python-environment
 
