@@ -2,20 +2,20 @@
 
 Python-CLI to easily create recipes for python-for-android. I use it for building a [kivy](https://kivy.org/#home)-app with [buildozer](https://buildozer.readthedocs.io/en/latest/).
 
-This is useful if the installation with pip fails or you don't want to add all requirements manually to your *buildozer.spec* file only to note on building that the dependencies itself have unmet dependencies, etc.
-
-In many cases you might need to make further changes to the recipe for a successful built but at least, this gives a filled in template to start with.
+This is useful if the installation with pip fails or you don't want to add all requirements manually to your *buildozer.spec* file, only to note on building that the dependencies itself have unmet dependencies.
 
 * Searches PyPI or Github for source-url by api-request
 * Prompts the user with a choice for possible versions
 * Fetches the dependencies of a package recursively by use of pipdeptree on the **locally installed version** of the package
 
-## 🔧 Setup
+The generated recipe **should be seen as a template**, even though in **simple cases it can work out of the box**. See [Troubleshooting][#troubleshooting].
+
+## 🔧 Setup {#setup}
 
 ### Installation
 
 ```
-git clone https://github.com/david-fischer/generate-p4a-recipe.git
+pip install git+https://github.com/david-fischer/generate-p4a-recipe.git
 cd generate-p4a-recipe
 pip install -r requirements.txt
 ```
@@ -28,7 +28,7 @@ We need to add the path of our recipes in the apropriate place in the *buildozer
 p4a.local_recipes = ./src/python-for-android/recipes/
 ```
 
-## 🎈 Usage 
+## 🎈 Usage {#usage}
 
 Usage example:
 
@@ -69,7 +69,7 @@ FLAGS
         Directory where the recipe should be saved. Defaults to ".".
 ```
 
-## :microscope: Troubleshooting
+## :microscope: Troubleshooting {#troubleshooting}
 
 * start script in correct python-environment
 
@@ -85,7 +85,7 @@ FLAGS
 
   -> check if necessary, add manually, try with call_hostpython_via_targetpython = False
 
-## :package: Dependencies
+## :package: Dependencies {#dependencies}
 
 * [pystache](https://github.com/defunkt/pystache) - filling the template
 * [fire](https://github.com/google/python-fire) - CLI
@@ -93,3 +93,6 @@ FLAGS
 * [attrs](https://www.attrs.org/en/stable/) - defining classes easily
 * [requests](https://requests.readthedocs.io/en/master/) - making requests to the github- or pypi-api
 * [pipdeptree](https://github.com/naiquevin/pipdeptree) - displays dependency tree of package
+
+[##:microscope: Troubleshooting]: 
+[#troubleshooting]: 
