@@ -73,12 +73,11 @@ Args:
             stdout=subprocess.PIPE,
             stderr=subprocess.DEVNULL,
         ).stdout.decode("utf-8")
-        dependencies = pipdeptree_out.split()
-        # first element is the package itself
-        self.depends_with_version = list(set(dependencies[1:]))
-        self.depends_without_version = str(
-            [re.search(r"([\w\-\_])*", dep)[0] for dep in self.depends_with_version]
-        )
+        dependencies = re.findall("^[\W]+([^\s]+)",pipdeptree_out,flags=re.MULTILINE)
+        self.depends_with_version = list(set(dependencies))[1:]
+        self.depends_without_version = [re.search(r"(^[\w\-\_]+)", dep)[0] for dep in self.depends_with_version]
+        print(self.depends_with_version)
+        print(self.depends_without_version)
 
     def get_pypi_url_and_version(self):
         json_response = requests.get(f"https://pypi.org/pypi/{self.package_name}/json").json()
