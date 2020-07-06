@@ -100,8 +100,9 @@ Args:
         json_response = requests.get(
             f"https://api.github.com/search/repositories?q={self.package_name}"
         ).json()
+        num_results = len(json_response["items"])
         menu_entries = [
-            f'{json_response["items"][i]["full_name"]}|{i}' for i in range(10)
+            f'{json_response["items"][i]["full_name"]}|{i}' for i in range(num_results)
         ]
         preview_function = lambda i: json_response["items"][int(i)]["description"]
         terminal_menu = TerminalMenu(
