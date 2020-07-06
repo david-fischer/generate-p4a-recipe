@@ -71,14 +71,16 @@ Args:
             stdout=subprocess.PIPE,
             stderr=subprocess.DEVNULL,
         ).stdout.decode("utf-8")
-        dependencies = re.findall("^[\W]+([^\s]+)",pipdeptree_out,flags=re.MULTILINE)
+        dependencies = re.findall(r"^[\s]*([^\s]+)", pipdeptree_out, flags=re.MULTILINE)
         self.depends_with_version = list(set(dependencies))[1:]
-        self.depends_without_version = [re.search(r"(^[\w\-\_]+)", dep)[0] for dep in self.depends_with_version]
-        print(self.depends_with_version)
-        print(self.depends_without_version)
+        self.depends_without_version = [
+            re.search(r"(^[\w\-\_]+)", dep)[0] for dep in self.depends_with_version
+        ]
 
     def get_pypi_url_and_version(self):
-        json_response = requests.get(f"https://pypi.org/pypi/{self.package_name}/json").json()
+        json_response = requests.get(
+            f"https://pypi.org/pypi/{self.package_name}/json"
+        ).json()
         current_version = json_response["info"]["version"]
         summary = json_response["info"]["summary"]
         versions = list(json_response["releases"].keys())
@@ -95,7 +97,9 @@ Args:
         json_response = requests.get(
             f"https://api.github.com/search/repositories?q={self.package_name}"
         ).json()
-        menu_entries = [f'{json_response["items"][i]["full_name"]}|{i}' for i in range(10)]
+        menu_entries = [
+            f'{json_response["items"][i]["full_name"]}|{i}' for i in range(10)
+        ]
         preview_function = lambda i: json_response["items"][int(i)]["description"]
         terminal_menu = TerminalMenu(
             title="Github:", menu_entries=menu_entries, preview_command=preview_function
@@ -112,8 +116,10 @@ Args:
         if TerminalMenu(
             title="Select source for package:", menu_entries=["PyPI", "github"]
         ).show():
+            # Github
             self.url, self.version = self.get_github_url_and_version()
         else:
+            # PyPI
             self.url, self.version = self.get_pypi_url_and_version()
 
     def recipe_str(self):
@@ -139,9 +145,18 @@ Args:
         if not os.path.exists(out_path):
             with open(out_path, "w") as out_file:
                 out_file.write(self.recipe_str())
+            self.print()
         else:
             print(f"Recipe at {out_path} already exists. Delete manually and restart.")
         exit()
+
+    def print(self):
+        print(
+            f"Project-Dir:    {self.project_dir}\n",
+            f"URL:            {self.url}\n",
+            f"Version:        {self.version}\n",
+            f"Dependencies:   {self.depends_without_version}\n",
+        )
 
 
 if __name__ == "__main__":
