@@ -55,6 +55,7 @@ Args:
 
     def __attrs_post_init__(self):
         self.package_name_upper = self.package_name.capitalize()
+        self.project_dir = os.path.expanduser(self.project_dir)
         self.set_dependencies()
         if not self.recipe_class:
             self.recipe_class = RECIPES[
