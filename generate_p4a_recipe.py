@@ -54,7 +54,9 @@ Args:
     project_dir = attr.ib(default=".")
 
     def __attrs_post_init__(self):
-        self.package_name_upper = self.package_name.capitalize()
+        self.package_name_upper = "".join(
+            word.capitalize() for word in re.split(r"[_\-]", self.package_name)
+        )
         self.project_dir = os.path.expanduser(self.project_dir)
         self.set_dependencies()
         if not self.recipe_class:
