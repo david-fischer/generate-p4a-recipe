@@ -8,9 +8,9 @@ This is useful if the installation with pip fails or you don't want to add all r
 * Prompts the user with a choice for possible versions
 * Fetches the dependencies of a package recursively by use of pipdeptree on the **locally installed version** of the package
 
-The generated recipe **should be seen as a template**, even though in **simple cases it can work out of the box**. See [Troubleshooting][#troubleshooting].
+The generated recipe **should be seen as a template**, even though in **simple cases it can work out of the box**. See [Troubleshooting][#troubleshooting]
 
-## 🔧 Setup {#setup}
+## 🔧 Setup
 
 ### Installation
 
@@ -28,7 +28,7 @@ We need to add the path of our recipes in the apropriate place in the *buildozer
 p4a.local_recipes = ./src/python-for-android/recipes/
 ```
 
-## 🎈 Usage {#usage}
+## 🎈 Usage
 
 Usage example:
 
@@ -69,7 +69,7 @@ FLAGS
         Directory where the recipe should be saved. Defaults to ".".
 ```
 
-## :microscope: Troubleshooting {#troubleshooting}
+## :microscope: Troubleshooting
 
 * start script in correct python-environment
 
@@ -94,5 +94,4 @@ FLAGS
 * [requests](https://requests.readthedocs.io/en/master/) - making requests to the github- or pypi-api
 * [pipdeptree](https://github.com/naiquevin/pipdeptree) - displays dependency tree of package
 
-[##:microscope: Troubleshooting]: 
-[#troubleshooting]: 
+[#troubleshooting]: #microscope-troubleshooting
