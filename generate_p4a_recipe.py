@@ -61,11 +61,6 @@ Args:
         if not self.url:
             self.set_url_and_version()
         self.save_recipe()
-        print(
-            "\nNote: If the compilation fails, you might need additional dependencies for the installation (e.g. "
-            "setuptools). If this is the case, add them manually to the recipe. You might also need to set "
-            "call_hostpython_via_targetpython=True"
-        )
 
     def set_dependencies(self):
         pipdeptree_out = subprocess.run(
